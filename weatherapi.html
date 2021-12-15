@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/75e360d1be.js" crossorigin="anonymous"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+    <title>Weather App</title>
+</head>
+
+<body>
+    <div class="container-fluid body">
+
+        <div class="left_floater navbar-light bg-light">
+            <ul class="nav-item top_icon mt-4">
+                <li><a href="#"><i class="fab fa-cloudversify fa-2x top_icon"></i></a></li>
+            </ul>
+            <ul class="nav-item mid_icon">
+                <li class="nav-item midicon"><a href="#"><i class="fas fa-home icon fa-2x icon"></i></a></li>
+                <li class="nav-item midicon"><a href="#"><i class="fas fa-door-open fa-2x icon"></i></a></li>
+                <li class="nav-item midicon"><a href="#"><i class="fas fa-cog fa-2x icon"></i></a></li>
+            </ul>
+            <ul class="nav-item bottom_icon">
+                <li><a href="#"><i class="fas fa-sign-out-alt fa-2x icon" ></i></a></li>
+            </ul>
+        </div>
+        <div class="non-floater">
+            <ul>
+
+                <nav class="navbar navbar-expand-lg navbar-light bg-light header">
+                    <div class="header_top">
+                        <li class="header_top_heading">
+                            <h3 class="navbar-brand">Weather Forecast</h3>
+                            <p class="text-muted">Saturday 26,December,2020</p>
+                        </li>
+                        <li class="Search_bar">
+                            <form class="form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search" id ="Search"
+                                    aria-label="Search">
+                                <button type="submit" style="border: none;" id="Submit"><i class="fas fa-search"></i></button>
+                            </form>
+                        </li>
+                        <li class="nav-item top_mid">
+                            <a class="nav-link" href="#"><i class="far fa-comments "></i></a>
+                            <a class="nav-link disabled" href="#"><i class="far fa-bell "></i></a>
+                        </li>
+                        <li>
+                            <div class="dropdown Profile_icon">
+                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button"
+                                    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    <i class="far fa-user-circle "></i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </div>
+                        </li>
+                </nav>
+            </ul>
+            <ul class="content_structure">
+
+                <div class="left" id='l'>
+                    <div>
+                        <li class="main_img">
+                            <img src="assets/1.png" height="150px" width="880px">
+                        </li>
+                    </div>
+                    <div class="content_days col-lg-12">
+                        <ul class="content_heading col-lg-8">
+                            <li class="head col-lg-9">
+                                <button class="toggler text-lg-center text-muted ml-2" id="Curr_day" onclick="document.getElementById('w').style.display='none';document.getElementById('t').style.display='flex';
+                                document.getElementById('l').style.width='65%';
+                                document.getElementById('r').style.margin='0 0 0 85px'">
+                                    Today
+                                </button>
+                                <button class="toggler text-lg-center text-muted ml-2" id="Curr_week" onclick="document.getElementById('t').style.display='none';document.getElementById('w').style.display='flex';
+                                document.getElementById('l').style.width='70%';
+                                document.getElementById('r').style.margin='0'">
+                                    Week
+                                </button>
+                            </li>
+                            <li class="tail col-lg-9 ">
+                                <button class="rounded-circle switch " name="C" style="background-color:#b71c1c " id="c" >&#176;C</button>
+                                <button class="rounded-circle switch" name="F" id="f">&#176;F</button>
+                            </li>
+                        </ul>
+                        <ul class="today col-lg-12" id="t" style="display: none;">
+                            <div class="card col-lg-12" style="border-radius: 10%;">
+                                <div class="card-body" id ="Today">
+                                    <h5 class="card-title">Today's Weather</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                    <p class="card-text"><i class="far fa-eye-slash"></i></p>
+                                    <a href="#" class="card-link"><i class="fas fa-tint"></i></a>
+                                    <a href="#" class="card-link temp"></a>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="week col-lg-12" id="w">
+                            <div class="card day col-lg-3">
+                                <div class="card-body " id="Saturday">
+                                    <h5 class="card-title">Saturday</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">Partly Cloudy</h6>
+                                    <p class="card-text"><i class="fas fa-wind"></i></p>
+                                    <a href="#" class="card-link"><i class="fas fa-tint">60%</i></a>
+                                    <a href="#" class="card-link temp"></a>
+                                </div>
+                            </div>
+                            <div class="card day col-lg-3">
+                                <div class="card-body" id="Sunday">
+                                    <h5 class="card-title">Sunday</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                    <p class="card-text"><i class="fas fa-wind"></i></p>
+                                    <a href="#" class="card-link"><i class="fas fa-tint"></i></a>
+                                    <a href="#" class="card-link temp"></a>
+                                </div>
+                            </div>
+                            <div class="card day col-lg-3">
+                                <div class="card-body" id="Monday">
+                                    <h5 class="card-title">Monday</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                    <p class="card-text"><i class="fas fa-wind"></i></p>
+                                    <a href="#" class="card-link"><i class="fas fa-tint"></i></a>
+                                    <a href="#" class="card-link temp"></a>
+                                </div>
+                            </div>
+                            <div class="card day col-lg-3">
+                                <div class="card-body" id="Tuesday">
+                                    <h5 class="card-title">Tuesday</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                    <p class="card-text"><i class="fas fa-wind"></i></p>
+                                    <a href="#" class="card-link"><i class="fas fa-tint"></i></a>
+                                    <a href="#" class="card-link temp"></a>
+                                </div>
+                            </div>
+                            <div class="card day col-lg-3">
+                                <div class="card-body" id="Wednesday">
+                                    <h5 class="card-title">Wednesday</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                    <p class="card-text"><i class="fas fa-wind"></i></p>
+                                    <a href="#" class="card-link"><i class="fas fa-tint"></i></a>
+                                    <a href="#" class="card-link temp"></a>
+                                </div>
+                            </div>
+                            <div class="card day col-lg-3">
+                                <div class="card-body" id="Thursday">
+                                    <h5 class="card-title">Thursday</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                    <p class="card-text"><i class="fas fa-wind"></i></p>
+                                    <a href="#" class="card-link"><i class="fas fa-tint"></i></a>
+                                    <a href="#" class="card-link temp"></a>
+                                </div>
+                            </div>
+                            <div class="card day col-lg-3">
+                                <div class="card-body" id="Friday">
+                                    <h5 class="card-title">Friday</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                    <p class="card-text"><i class="fas fa-wind"></i></p>
+                                    <a href="#" class="card-link"><i class="fas fa-tint"></i></a>
+                                    <a href="#" class="card-link temp"></a>
+                                </div>
+                            </div>
+                            
+                    </ul>
+                </div>
+                <div class="highlights col-lg-12">
+                    <div class="highlight_heading">
+                        <h5 class="text-muted text-capitalize">Today's Highlight</h5>
+                    </div>
+                    <div class="todays_highlight col-lg-12">
+                    <div class="card day col-lg-4">
+                        <img src="assets/sunrise.png" alt="Sunrise/sunset" height="150px" width="250px">        
+                    </div>
+                    <div class="card day col-lg-4">
+                            <img src="assets/graph.png" alt="temperature graph" height="150px" width="250px" >
+                    </div>
+                    <div class="card day col-lg-4">
+                        <img src="assets/airindex.png" alt="AQI" height="150px" width="250px">
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="right" id='r'>
+                <div class="calendar card">
+                    <img src="./assets/calendar.png" alt="Calendar" height="200px" width="250px">
+                </div>
+                <div class="newsletter card" style="text-align: center;">
+                    <div>
+                        <img src="./assets/subscribe.png" alt="Subscribe" height="50px" width="250px">
+                    </div>
+                </div>
+                <div class="advertisement card">
+                    <img src="./assets/download.png" alt="Install our App" height="150px" width="300px">
+                </div>
+                <div class="city card">
+                    <img src="./assets/addcity.png" height="150px" width="300px" alt="add city">
+                </div>
+            </div>
+        </ul>
+    </div>
+</div>
+
+
+
+<script src="./script.js"></script>
+</body>
+</html>
